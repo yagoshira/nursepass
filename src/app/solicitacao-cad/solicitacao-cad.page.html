@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()"><ion-icon name="arrow-back-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Solicitação</ion-title><ion-icon slot="end" size="large" name="reader-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- nova ocorrência -->
+  <div *ngIf="opcao == 1">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Nova Ocorrência</ion-card-title>
+        <ion-card-subtitle>
+          Preencha o formulário
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="full">
+
+          <ion-item>
+            <ion-label position="floating" text-wrap color="primary">Empresa:</ion-label>
+            <ion-select [(ngModel)]="empresaSelecionada" (ionChange)="verificarEmpresaSelecionada()" [(ngModel)]="empresa">
+              <ion-select-option>CEVA/Temporário</ion-select-option>
+              <ion-select-option>Diarista</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="empresaSelecionada === 'CEVA/Temporário'">
+            <ion-label position="floating">Selecione um colaborador</ion-label>
+              <ion-select [(ngModel)]="nome" placeholder="Selecione colaboradores:" [multiple]="false">
+                <ion-select-option *ngFor="let x of list_colaboradores">{{ x.nome }}</ion-select-option>
+              </ion-select>
+          </ion-item>
+
+          
+
+          <ion-item *ngIf="empresaSelecionada === 'Diarista'">
+            <ion-label position="floating">Empresa (Diarista):</ion-label>
+            <ion-input [(ngModel)]="outra_empresa"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="empresaSelecionada === 'Diarista'">
+            <ion-label position="floating">Nome do Colaborador:</ion-label>
+            <ion-input [(ngModel)]="nome"></ion-input>
+          </ion-item>
+
+
+          <ion-item *ngIf="empresaSelecionada === 'Diarista'">           
+            <ion-input [(ngModel)]="cpf">
+              <ion-label color="primary">CPF: </ion-label>
+            </ion-input>
+          </ion-item>
+          <ion-item color="light">
+            <ion-label color="primary" id="data">Data: {{saida | date : 'dd/MM/yyyy HH:mm'}} </ion-label>
+            <ion-modal class="modal-wrapper" #modal trigger="data">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-title>Data de Saida</ion-title>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content>
+                  <ion-item color="light">
+                    <ion-datetime [showDefaultButtons]="true" presentation="data" displayFormat="HH:mm"
+                      [(ngModel)]="saida"></ion-datetime>
+                    </ion-item>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+            </ion-item>
+            
+          <div style="text-align: center;">
+            <ion-button (click)="salvar()" [disabled]="!nome || !empresa || !saida"
+              expand="block">Solicitar</ion-button>
+          </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

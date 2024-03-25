@@ -1,0 +1,98 @@
+<ion-menu [disabled]="usuario != 'GREEN'" contentId="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+    <div class="menu">
+      <ion-list lines="full">
+        <ion-button [disabled]="true" (click)="GoToReports()" shape="round" color="light" expand="full">
+          Reports
+        </ion-button>
+      </ion-list>
+    </div>
+  </ion-header>
+  
+
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Gestor Painel</ion-title>
+      <ion-button slot="end" (click)="logout()">
+        <ion-icon name="exit-sharp" size="large" color="danger"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let x of lista">
+    <!-- inicio -->
+    <ion-modal class="modal-wrapper" #modal trigger="{{x.id}}" (willDismiss)="onWillDismiss($event)"
+      [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Detalhes do Atendimento</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content >
+          <ion-list  *ngFor="let item of ocorrencia" class="flutuante" no-padding>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Ocorrencia ID: {{item.id}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Nome do Colaborador: {{item.nome}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Horário de Saida: {{item.saida}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Horário de Chegada: {{item.chegada}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Tratativa: {{item.tratativa}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Qualificacao: {{item.qualificacao}}</ion-label>
+            </ion-item>
+            <ion-item class="detail" no-padding>
+              <ion-label text-wrap>Horário de Encerramento: {{item.encerrado}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+
+      </ng-template>
+    </ion-modal>
+    <!-- fim -->
+    <ion-card-header>
+      <div class="title-sub">
+        <ion-card-title>Ocorrência #{{x.id}}</ion-card-title>
+        <ion-label><ion-icon name="time-outline"></ion-icon>{{x.saida | date:'dd/MM/yyyy HH:mm'}}</ion-label>
+      </div>
+
+      <ion-card-subtitle><ion-icon name="person-sharp"></ion-icon>{{x.nome}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-button id="{{x.id}}" (click)="getOcorrenciaID(x.id)" fill="clear" color="tertiary">Vizualizar</ion-button>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="chevron-up-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="solicitacao_cad()">
+        <ion-icon name="add">Cadastrar</ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

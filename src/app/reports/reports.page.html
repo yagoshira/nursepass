@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="painel()" ><ion-icon name="arrow-back-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Reports</ion-title><ion-icon slot="end" size="large" name="documents-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-card>
+<ion-title></ion-title>
+<ion-accordion-group>
+  <ion-accordion value="start">
+    <ion-item  slot="header">
+      <ion-label>Selecione a data referente: (MM/AA)</ion-label> 
+    </ion-item>
+    <ion-datetime displayFormat="HH:mm" slot="content" presentation="date-time"></ion-datetime>
+  </ion-accordion>
+</ion-accordion-group>
+</ion-card>
+
+<div style="text-align: center;">
+  <ion-button (click)="salvar()" expand="block">Solicitar</ion-button>
+</div> 
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-menu contentId="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+    <div class="menu">
+      <ion-list lines="full">
+        <ion-button [disabled]="true" (click)="GoToReports()" shape="round" color="light" expand="full">
+          Reports
+        </ion-button>
+        <ion-button [disabled]="false" (click)="logout()" shape="round" color="danger" expand="full">
+          Sair
+        </ion-button>
+      </ion-list>
+    </div>
+  </ion-header>
+  
+
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>ADMIN Painel</ion-title>
+      <ion-icon slot="end" size="large"
+        name="tv-outline"></ion-icon>
+    </ion-toolbar>
+    <ion-item>
+      Filtros
+      <ion-toolbar>
+        <ion-searchbar [debounce]="1000" (ionChange)="searchGravidade($event)"></ion-searchbar>
+      </ion-toolbar>
+    </ion-item>
+  </ion-header>
+
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-item-divider>
+          <ion-col>ID</ion-col>
+          <ion-col>Nome</ion-col>
+          <ion-col>Empresa</ion-col>
+          <ion-col>Status</ion-col>
+          <ion-col>Situação do Atendimento</ion-col>
+        </ion-item-divider>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-list lines="full">
+      <div class="chegada">
+      <ion-item color="light" *ngFor="let item of lista">
+        <ion-label>{{item.id}}</ion-label>
+        <ion-label>{{item.nome}}</ion-label>
+        <ion-label>{{item.empresa}}</ion-label>
+        <ion-label>{{item.status}}</ion-label>
+        <ion-button (click)="getSolicitacao_id(item.id)" color="{{item.color}}" fill="clear">{{item.situacao}}</ion-button>
+      </ion-item>
+    </div>
+    </ion-list>
+
+  </ion-content>

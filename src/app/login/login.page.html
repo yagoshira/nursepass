@@ -1,0 +1,35 @@
+<ion-header class="teste" [translucent]="true">
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card class="ion-no-margin">
+      <ion-toolbar>
+      </ion-toolbar>
+      <ion-card>
+        <ion-card-title> <img src="./assets/img/nursepassheader.png" width="133" />
+          <p>Bem-Vindo!</p>
+        </ion-card-title>
+        Digite sua matricula para acessar!
+      </ion-card>
+      <ion-card-content>
+        <ion-card class="cardlogin">
+          <div class="wrapform">
+            <ion-item color="light">
+              <ion-input placeholder="Matrícula" [(ngModel)]="matricula">
+                <ion-icon slot="start" name="person-outline"></ion-icon>
+              </ion-input>
+            </ion-item>
+          </div>
+        </ion-card>
+        <div class="sign-btn-wrap">
+          <ion-button shape="round" fill="solid" class="sign-btn" (click)="login()"
+            [disabled]="!matricula">Entrar</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-label class="ion-no-margin">
+      <img src="./assets/img/ceva_logo.png" width="200" />
+    </ion-label>
+  </div>
+</ion-content>

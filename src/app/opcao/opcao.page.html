@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Opções</ion-title><ion-icon slot="end" size="large" name="apps-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="main">
+    <div class="title">
+      <ion-label class="title">Selecione uma opção:</ion-label>
+    </div>
+    <ion-list lines="full">
+      <ion-button (click)="solicitante()" expand="block">Minhas Ocorrências</ion-button>
+      <ion-button [disabled]="true" (click)="solicitante()" expand="block">Todas Ocorrências</ion-button>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

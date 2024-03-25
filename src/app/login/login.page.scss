@@ -1,0 +1,81 @@
+ion-content {
+  --ion-background-color: #e1eaf9 !important;
+  text-align: center;
+}
+
+ion-title {
+  text-align: center;
+}
+
+ion-card {
+  --ion-backgroud-color: transparent;
+  display: inline-block;
+  width: 100%;
+  // margin-right: 150px;
+  box-shadow: none !important;
+  box-shadow: #04103a !important;
+}
+
+// ion-card-subtitle {
+//   padding-top: 15px;
+//   font-size: 16px;
+//   color: #898585;
+//   text-align: center;
+//   font-weight: 200;
+// }
+
+// ion-card-title {
+//   margin-top: 20px;
+//   font-size: 24px;
+//   color: #021d49;
+//   text-align: center;
+//   font-weight: 500;
+// }
+
+ion-item {
+  color: #021d49 !important;
+  --border-color: #737579;
+  --highlight-color-focused: #1248a0 !important;
+  --highlight-color-valid: #021d49;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  font-size: 18px;
+
+  ion-select {
+    color: #021d49;
+    width: 100%;
+  }
+
+  ion-icon {
+    color: #021d49;
+    margin-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+  }
+
+}
+
+.wrapform {
+  text-align:center;
+}
+
+.sign-btn-wrap {
+  text-align: center;
+
+  .sign-btn {
+    color: #faf6fa;
+  }
+}
+
+.cardlogin {
+  width: 370px;
+  // box-shadow: 04103a !important;
+  border: 1px solid #04103a;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.teste {
+  color: #04103a !important;
+}
